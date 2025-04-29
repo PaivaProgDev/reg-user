@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="bg-[#191919] p-2 text-white">
+    <header className="bg-[#191919] px-4 py-3 text-white">
       <h1 className="text-2xl">
         <span className="font-extralight">Reg</span>
         <span className="font-semibold">User</span>
@@ -12,3 +12,4 @@ const Header = () => {
 };
 
 export default Header;
+1;
