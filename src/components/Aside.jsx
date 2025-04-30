@@ -9,13 +9,16 @@ import {
 
 const Aside = () => {
   return (
-    <aside className="bg-[#efedfa] fixed left-0 h-full">
+    <aside className="bg-[#efedfa] absolute left-0 h-full ">
       <nav>
         <ul className="flex flex-col">
           <li>
             <NavLink
-              className="flex items-center gap-3 px-6 py-3 bg-[#4575F4] text-white"
-              to={"/user-list"}
+              to={"/"}
+              className={({
+                isActive,
+              }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
               <FaUserGroup fontSize={20} />
               <span>Lista de usuários</span>
@@ -23,8 +26,11 @@ const Aside = () => {
           </li>
           <li>
             <NavLink
-              className="flex items-center gap-3 px-6 py-3"
               to={"/user-registration"}
+              className={({
+                isActive,
+              }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
               <FaUserPlus fontSize={20} />
               <span>Cadastrar usuário</span>
@@ -32,8 +38,11 @@ const Aside = () => {
           </li>
           <li>
             <NavLink
-              className="flex items-center gap-3 px-6 py-3"
               to={"/modify-user"}
+              className={({
+                isActive,
+              }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
               <FaUserPen fontSize={20} />
               <span>Modificar usuário</span>
@@ -41,10 +50,13 @@ const Aside = () => {
           </li>
           <li>
             <NavLink
-              className="flex items-center gap-3 px-6 py-3"
               to={"/remove-user"}
+              className={({
+                isActive,
+              }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
-              <FaUserPen fontSize={20} />
+              <FaUserXmark fontSize={20} />
               <span>Remover usuário</span>
             </NavLink>
           </li>
