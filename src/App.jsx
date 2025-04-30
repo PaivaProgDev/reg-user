@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import "./App.css";
 import Aside from "./components/Aside";
 import UserList from "./components/userList";
-
+import RegistrationScreen from "./components/RegistrationScreen";
 const App = () => {
   return (
     <main className="App w-full relative h-screen overflow-hidden">
@@ -13,7 +13,7 @@ const App = () => {
         <Aside />
         <Routes>
           <Route path="/" element={<UserList />} />
-          <Route path="/user-registration" />
+          <Route path="/user-registration" element={<RegistrationScreen />} />
           <Route path="/modify-user" />
           <Route path="/remove-user" />
         </Routes>

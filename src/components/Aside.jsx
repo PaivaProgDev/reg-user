@@ -20,7 +20,7 @@ const Aside = () => {
               }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
-              <FaUserGroup fontSize={20} />
+              <FaUserGroup fontSize={18} />
               <span>Lista de usuários</span>
             </NavLink>
           </li>
@@ -32,7 +32,7 @@ const Aside = () => {
               }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
-              <FaUserPlus fontSize={20} />
+              <FaUserPlus fontSize={18} />
               <span>Cadastrar usuário</span>
             </NavLink>
           </li>
@@ -44,7 +44,7 @@ const Aside = () => {
               }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
-              <FaUserPen fontSize={20} />
+              <FaUserPen fontSize={18} />
               <span>Modificar usuário</span>
             </NavLink>
           </li>
@@ -56,7 +56,7 @@ const Aside = () => {
               }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
             >
-              <FaUserXmark fontSize={20} />
+              <FaUserXmark fontSize={18} />
               <span>Remover usuário</span>
             </NavLink>
           </li>
