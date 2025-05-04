@@ -5,3 +5,25 @@
     font-family: Poppins;
     list-style: none;
 }
+
+::placeholder {
+    font-size: 14px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+button:hover,
+a:hover {
+    opacity: .9
+}
+
+input {
+    outline: 0;
+}
+
+input::placeholder {
+    font-size: 13px;
+}

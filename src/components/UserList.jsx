@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUserPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const UserList = () => {
   return (
@@ -12,12 +13,14 @@ const UserList = () => {
         <p className="text-[#363636] text-[14px] mb-[2rem]">
           Não há nenhum usuário cadastrado ainda...
         </p>
-        <Link
-          to={"/user-registration"}
-          className="flex items-center gap-3 text-[14px] bg-[#4575F4] px-4 py-2 rounded text-white"
-        >
-          <FaUserPlus fontSize={18} />
-          Cadastrar usuário
+        <Link className="text-[13px]" to={"/user-registration"}>
+          <Button
+            content={
+              <>
+                <FaUserPlus fontSize={18} /> Cadastrar usuário
+              </>
+            }
+          />
         </Link>
       </div>
     </div>
