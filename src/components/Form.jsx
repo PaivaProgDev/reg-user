@@ -11,6 +11,20 @@ const Form = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    fetch("../../users.json", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contact: contact,
+        name: name,
+        email: email,
+        city: city,
+      }),
+    });
+
     setName("");
     setContact("");
     setEmail("");
@@ -32,7 +46,7 @@ const Form = () => {
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
               type="text"
               placeholder="Nome"
-              required
+              // required
             />
           </label>
           <label className="w-full border-b-1 border-gray-300 text-[13px]">
@@ -43,7 +57,7 @@ const Form = () => {
               className=" mt-2 pl-[6px] text-[#3d3d3d] w-full"
               type="number"
               placeholder="Contato"
-              required
+              // required
             />
           </label>
         </div>
@@ -56,7 +70,7 @@ const Form = () => {
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
               type="email"
               placeholder="Email"
-              required
+              // required
             />
           </label>
           <label className="w-full border-b-1 border-gray-300 text-[13px]">
@@ -67,12 +81,20 @@ const Form = () => {
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
               type="text"
               placeholder="Cidade"
-              required
+              // required
             />
           </label>
         </div>
       </div>
-      <Button content={"Cadastrar"} disabled={!city || city.length <= 3} />
+      <Button
+        content={"Cadastrar"}
+        // disabled={
+        //   city.length <= 3 ||
+        //   name.length <= 3 ||
+        //   email.length <= 7 ||
+        //   contact.length <= 6
+        // }
+      />
     </form>
   );
 };
