@@ -52,6 +52,7 @@ export const AppProvider = ({ children }) => {
     contact,
     email,
     city,
+    users,
     setName,
     setContact,
     setEmail,

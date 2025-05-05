@@ -27,3 +27,13 @@ input {
 input::placeholder {
     font-size: 13px;
 }
+
+table tr:nth-child(even) {
+    background-color: #e4e0ee;
+    /* Cor de fundo para linhas pares */
+}
+
+table tr:nth-child(odd) {
+    background-color: #f7edf6;
+    /* Cor de fundo para linhas ímpares */
+}
