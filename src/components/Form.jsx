@@ -5,17 +5,8 @@ import Button from "./Button";
 import { useAppContext } from "../context/AppContext";
 
 const Form = () => {
-  const {
-    name,
-    contact,
-    email,
-    city,
-    setName,
-    setContact,
-    setEmail,
-    setCity,
-    createUser,
-  } = useAppContext();
+  const { name, contact, city, setName, setContact, setCity, createUser } =
+    useAppContext();
 
   return (
     <form
@@ -38,24 +29,12 @@ const Form = () => {
           <label className="w-full border-b-1 border-gray-300 text-[13px]">
             <BsTelephone strokeWidth={0.3} fontSize={16} color="#4575F4" />
             <input
-              onChange={(e) => setContact(e.target.value)}
+              pattern="^\d{2} \d{5}-\d{4}$"
+              onChange={(e) => setContact(parseInt(e.target.value))}
               value={contact}
               className=" mt-2 pl-[6px] text-[#3d3d3d] w-full"
               type="number"
               placeholder="Contato"
-              // required
-            />
-          </label>
-        </div>
-        <div className="flex flex-col gap-4 w-full">
-          <label className="w-full border-b-1 border-gray-300 text-[13px]">
-            <FaRegEnvelope strokeWidth={0.3} fontSize={16} color="#4575F4" />
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
-              type="email"
-              placeholder="Email"
               // required
             />
           </label>

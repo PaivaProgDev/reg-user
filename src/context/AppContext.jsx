@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../backend/db";
 
 // Cria o contexto
 const AppContext = createContext();
@@ -8,41 +10,33 @@ export const useAppContext = () => useContext(AppContext);
 
 // Provedor
 export const AppProvider = ({ children }) => {
-  // Usuários
-  const [users, setUsers] = useState(() => {
-    const storage = JSON.parse(localStorage.getItem("users"));
-    return storage ? storage : [];
-  });
-
-  // Pega os usuários
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
-
   // Estado dos inputs
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
-  const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
 
   // Novo usuário
   const newUser = {
-    id: users.length + 1,
     name,
     contact,
-    email,
     city,
+    dateRegister: new Date().toLocaleDateString(),
   };
 
   // Cria o novo usuário
-  const createUser = (e) => {
+  const createUser = async (e) => {
     e.preventDefault();
 
-    setUsers((prev) => [...prev, newUser]);
+    try {
+      const docRef = await addDoc(collection(db, "users"), { newUser });
+
+      console.log("Documento criado com ID:", docRef.id);
+    } catch (e) {
+      console.log("error:", e);
+    }
 
     setName("");
     setContact("");
-    setEmail("");
     setCity("");
   };
 
@@ -50,12 +44,9 @@ export const AppProvider = ({ children }) => {
   const value = {
     name,
     contact,
-    email,
     city,
-    users,
     setName,
     setContact,
-    setEmail,
     setCity,
     createUser,
   };

@@ -24,7 +24,11 @@ input {
     outline: 0;
 }
 
-input::placeholder {
+input {
+    text-transform: capitalize;
+}
+
+input[type="text"]::placeholder {
     font-size: 13px;
 }
 
