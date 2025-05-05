@@ -2,38 +2,24 @@ import React, { useEffect, useState } from "react";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa6";
 import { BsTelephone, BsBuildings } from "react-icons/bs";
 import Button from "./Button";
+import { useAppContext } from "../context/AppContext";
 
 const Form = () => {
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    fetch("../../users.json", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contact: contact,
-        name: name,
-        email: email,
-        city: city,
-      }),
-    });
-
-    setName("");
-    setContact("");
-    setEmail("");
-    setCity("");
-  };
+  const {
+    name,
+    contact,
+    email,
+    city,
+    setName,
+    setContact,
+    setEmail,
+    setCity,
+    createUser,
+  } = useAppContext();
 
   return (
     <form
-      onSubmit={submitForm}
+      onSubmit={createUser}
       className="flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 "
     >
       <div className="flex gap-7 items-center ">
