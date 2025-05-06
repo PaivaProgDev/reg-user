@@ -14,13 +14,19 @@ export const AppProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [city, setCity] = useState("");
+  const [message, setMessage] = useState("");
+
+  // Transforma a primera letra em maiúscula
+  const firstLetter = name.charAt(0).toUpperCase();
+  // Pega o restante do nome
+  const otherLetters = name.substring(1);
 
   // Novo usuário
   const newUser = {
-    name,
+    name: firstLetter + otherLetters,
+    dateRegister: new Date().toLocaleDateString(),
     contact,
     city,
-    dateRegister: new Date().toLocaleDateString(),
   };
 
   // Cria o novo usuário
@@ -28,11 +34,11 @@ export const AppProvider = ({ children }) => {
     e.preventDefault();
 
     try {
-      const docRef = await addDoc(collection(db, "users"), { newUser });
+      await addDoc(collection(db, "users"), { newUser });
 
-      console.log("Documento criado com ID:", docRef.id);
+      setMessage(`O usuário ${name} foi cadastrado com sucesso!`);
     } catch (e) {
-      console.log("error:", e);
+      setMessage(":( usuário não cadastrado, tente novamente...");
     }
 
     setName("");
@@ -45,6 +51,7 @@ export const AppProvider = ({ children }) => {
     name,
     contact,
     city,
+    message,
     setName,
     setContact,
     setCity,
