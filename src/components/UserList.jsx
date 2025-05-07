@@ -5,7 +5,7 @@ import Button from "./Button";
 import { useAppContext } from "../context/AppContext";
 
 const UserList = () => {
-  const { users } = useAppContext();
+  const { readUsers } = useAppContext();
 
   return (
     <div className="ml-[13.25rem] h-full">
@@ -13,26 +13,26 @@ const UserList = () => {
         Lista de usuários
       </h2>
       <div className=" flex justify-center flex-col items-center mt-[10rem] text-left">
-        {users ? (
+        {readUsers.length > 0 ? (
           <>
             <table className="w-full max-w-[50rem] ">
               <thead>
                 <tr>
                   <th className="py-2 px-4">ID</th>
                   <th>Nome</th>
-                  <th>Email</th>
                   <th>Contato</th>
                   <th>Cidade</th>
+                  <th>Registro</th>
                 </tr>
               </thead>
               <tbody className="text-[13px] font-normal">
-                {users.map((user) => (
+                {readUsers.map((user) => (
                   <tr key={user.id}>
                     <td className="py-2 px-4">{user.id}</td>
                     <td>{user.name}</td>
-                    <td>{user.email}</td>
                     <td>{user.contact}</td>
                     <td>{user.city}</td>
+                    <td>{user.dateRegister}</td>
                   </tr>
                 ))}
               </tbody>
