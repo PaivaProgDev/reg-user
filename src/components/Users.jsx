@@ -1,12 +1,12 @@
 import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { FaUserPlus } from "react-icons/fa6";
+import { FaUserPlus, FaUserPen } from "react-icons/fa6";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const Users = ({ setUserTh, setUserTd }) => {
-  const { readUsers } = useAppContext();
-  const { removeUsers } = useAppContext();
+  const { readUsers, deleteUser, setModalModify, setUserIdModify } =
+    useAppContext();
 
   return (
     <>
@@ -35,13 +35,23 @@ const Users = ({ setUserTh, setUserTd }) => {
                     <td>{user.data.city}</td>
                     <td>{user.data.dateRegister}</td>
                     <td>
-                      {setUserTd === "remove" && (
+                      {(setUserTd === "remove" && (
                         <Button
-                          onClick={() => removeUsers(user.id)}
+                          onClick={() => deleteUser(user.id)}
                           className={"!mt-2 mb-2 bg-red-400"}
                           content={<FaRegTrashAlt />}
                         />
-                      )}
+                      )) ||
+                        (setUserTd === "modalModify" && (
+                          <Button
+                            onClick={() => {
+                              setModalModify(true);
+                              setUserIdModify(user.id);
+                            }}
+                            className={"!mt-2 mb-2 bg-[#4575F4] "}
+                            content={<FaUserPen />}
+                          />
+                        ))}
                     </td>
                   </tr>
                 ))}

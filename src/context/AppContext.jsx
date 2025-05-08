@@ -7,6 +7,7 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../backend/db";
 
@@ -23,6 +24,8 @@ export const AppProvider = ({ children }) => {
   const [contact, setContact] = useState("");
   const [city, setCity] = useState("");
   const [readUsers, setReadUsers] = useState([]);
+  const [modalModify, setModalModify] = useState(false);
+  const [userIdModify, setUserIdModify] = useState(null);
 
   // Transforma a primera letra em maiúscula
   const firstLetter = name.charAt(0).toUpperCase();
@@ -40,9 +43,9 @@ export const AppProvider = ({ children }) => {
       await addDoc(collection(db, "users"), {
         id: userIdGenerator,
         name: firstLetter + otherLetters,
-        dateRegister: new Date().toLocaleDateString(),
         contact,
         city: firstLetter + otherLetters,
+        dateRegister: new Date().toLocaleDateString(),
       });
 
       toast.success("Usuário cadastrado! :D");
@@ -69,7 +72,8 @@ export const AppProvider = ({ children }) => {
     getUser();
   });
 
-  const removeUsers = async (id) => {
+  // Deletar usuário
+  const deleteUser = async (id) => {
     try {
       const docRef = doc(db, "users", id);
       await deleteDoc(docRef);
@@ -78,17 +82,36 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  // Valores a serem passado via context
+  // Modifica os dados do usuário
+  const modifyUser = async (id) => {
+    try {
+      const docRef = doc(db, "users", id);
+      await updateDoc(docRef, {
+        name: name,
+        contact: contact,
+        city: city,
+      });
+    } catch (erro) {
+      console.log(erro);
+    }
+  };
+
+  // Valores a serem passados via context
   const value = {
     name,
     contact,
     city,
     readUsers,
+    modalModify,
+    userIdModify,
     setName,
     setContact,
     setCity,
     createUser,
-    removeUsers,
+    deleteUser,
+    modifyUser,
+    setModalModify,
+    setUserIdModify,
   };
 
   // Retorna o Context em todo o App

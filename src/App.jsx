@@ -7,7 +7,12 @@ import UserList from "./components/UserList";
 import RegistrationScreen from "./components/RegistrationScreen";
 import RemoveUserScreen from "./components/RemoveUserScreen";
 import { ToastContainer } from "react-toastify";
+import ModifyUserScreen from "./components/ModifyUserScreen";
+import { useAppContext } from "./context/AppContext";
+import Modal from "./components/Modal";
 const App = () => {
+  const { modalModify } = useAppContext();
+
   return (
     <main className="App w-full relative h-screen overflow-hidden">
       <ToastContainer
@@ -25,10 +30,11 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Aside />
+        {modalModify && <Modal />}
         <Routes>
           <Route path="/" element={<UserList />} />
           <Route path="/user-registration" element={<RegistrationScreen />} />
-          <Route path="/modify-user" />
+          <Route path="/modify-user" element={<ModifyUserScreen />} />
           <Route path="/remove-user" element={<RemoveUserScreen />} />
         </Routes>
       </BrowserRouter>

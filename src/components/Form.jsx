@@ -11,7 +11,7 @@ const Form = () => {
   return (
     <form
       onSubmit={createUser}
-      className="flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 "
+      className="flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300"
     >
       <div className="flex gap-7 items-center ">
         <div className="flex flex-col gap-4 w-full">
@@ -57,7 +57,6 @@ const Form = () => {
         // disabled={
         //   city.length <= 3 ||
         //   name.length <= 3 ||
-        //   email.length <= 7 ||
         //   contact.length <= 6
         // }
       />
