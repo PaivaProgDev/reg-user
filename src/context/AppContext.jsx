@@ -1,5 +1,13 @@
-import { createContext, use, useContext, useEffect, useState } from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
+import {
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "../../backend/db";
 
 // Cria o contexto
@@ -14,7 +22,6 @@ export const AppProvider = ({ children }) => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [city, setCity] = useState("");
-  const [message, setMessage] = useState("");
   const [readUsers, setReadUsers] = useState([]);
 
   // Transforma a primera letra em maiúscula
@@ -22,7 +29,8 @@ export const AppProvider = ({ children }) => {
   // Pega o restante do nome
   const otherLetters = name.substring(1);
 
-  const randomId = Math.random().toString(36).substring(2, 9);
+  // Gera um ID por usuário
+  const userIdGenerator = Math.random().toString(36).substring(2, 9);
 
   // Cria o novo usuário
   const createUser = async (e) => {
@@ -30,45 +38,57 @@ export const AppProvider = ({ children }) => {
 
     try {
       await addDoc(collection(db, "users"), {
-        id: randomId,
+        id: userIdGenerator,
         name: firstLetter + otherLetters,
         dateRegister: new Date().toLocaleDateString(),
         contact,
         city: firstLetter + otherLetters,
       });
 
-      setMessage(`O usuário ${name} foi cadastrado com sucesso!`);
-    } catch (e) {
-      setMessage(":( usuário não cadastrado, tente novamente...");
-    }
+      toast.success("Usuário cadastrado! :D");
 
-    setName("");
-    setContact("");
-    setCity("");
+      setName("");
+      setContact("");
+      setCity("");
+    } catch (e) {
+      toast.error("Houve um erro, Tente novamente! :(");
+    }
   };
 
   // Ler os dados
   const getUser = async () => {
     const docRef = await getDocs(collection(db, "users"));
     const users = docRef.docs.map((user) => ({
-      ...user.data(),
+      id: user.id,
+      data: user.data(),
     }));
     setReadUsers(users);
   };
 
-  getUser();
+  useEffect(() => {
+    getUser();
+  });
+
+  const removeUsers = async (id) => {
+    try {
+      const docRef = doc(db, "users", id);
+      await deleteDoc(docRef);
+    } catch (erro) {
+      console.log(erro);
+    }
+  };
 
   // Valores a serem passado via context
   const value = {
     name,
     contact,
     city,
-    message,
     readUsers,
     setName,
     setContact,
     setCity,
     createUser,
+    removeUsers,
   };
 
   // Retorna o Context em todo o App

@@ -5,16 +5,8 @@ import Button from "./Button";
 import { useAppContext } from "../context/AppContext";
 
 const Form = () => {
-  const {
-    name,
-    contact,
-    city,
-    setName,
-    setContact,
-    setCity,
-    createUser,
-    message,
-  } = useAppContext();
+  const { name, contact, city, setName, setContact, setCity, createUser } =
+    useAppContext();
 
   return (
     <form
@@ -59,7 +51,6 @@ const Form = () => {
           </label>
         </div>
       </div>
-      <p className="text-green-600 text-[13px] text-center mt-4">{message}</p>
       <Button
         content={"Cadastrar"}
         className="!mt-5"

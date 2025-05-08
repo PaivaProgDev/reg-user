@@ -2,9 +2,11 @@ import { useAppContext } from "../context/AppContext";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { FaUserPlus } from "react-icons/fa6";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-const Users = ({ setUser }) => {
+const Users = ({ setUserTh, setUserTd }) => {
   const { readUsers } = useAppContext();
+  const { removeUsers } = useAppContext();
 
   return (
     <>
@@ -19,20 +21,28 @@ const Users = ({ setUser }) => {
                   <th className="bg-[#ede8f8]">Contato</th>
                   <th className="bg-[#ede8f8]">Cidade</th>
                   <th className="bg-[#ede8f8]">Registro</th>
-                  <th className="bg-[#ede8f8]">{setUser}</th>
+                  <th className="bg-[#ede8f8]">{setUserTh}</th>
                 </tr>
               </thead>
               <tbody className="text-[13px] font-normal">
                 {readUsers.map((user) => (
                   <tr key={user.id} className="text-[#353535] font-medium">
                     <td className="py-2 px-4 text-[#353535] font-semibold">
-                      {user.id}
+                      {user.data.id}
                     </td>
-                    <td>{user.name}</td>
-                    <td>{user.contact}</td>
-                    <td>{user.city}</td>
-                    <td>{user.dateRegister}</td>
-                    <td>{setUser}</td>
+                    <td>{user.data.name}</td>
+                    <td>{user.data.contact}</td>
+                    <td>{user.data.city}</td>
+                    <td>{user.data.dateRegister}</td>
+                    <td>
+                      {setUserTd === "remove" && (
+                        <Button
+                          onClick={() => removeUsers(user.id)}
+                          className={"!mt-2 mb-2 bg-red-400"}
+                          content={<FaRegTrashAlt />}
+                        />
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
