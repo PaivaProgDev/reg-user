@@ -26,7 +26,7 @@ const Modal = () => {
             e.preventDefault();
             e.stopPropagation();
           }}
-          className="flex flex-col mt-30 h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 bg-white"
+          className="flex flex-col m-3 h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 bg-white"
         >
           <div className="flex gap-7 items-center ">
             <div className="flex flex-col gap-4 w-full">

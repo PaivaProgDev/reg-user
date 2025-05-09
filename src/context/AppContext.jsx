@@ -26,6 +26,8 @@ export const AppProvider = ({ children }) => {
   const [readUsers, setReadUsers] = useState([]);
   const [modalModify, setModalModify] = useState(false);
   const [userIdModify, setUserIdModify] = useState(null);
+  const [aside, setAside] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Transforma a primera letra em maiúscula
   const firstLetter = name.charAt(0).toUpperCase();
@@ -68,10 +70,6 @@ export const AppProvider = ({ children }) => {
     setReadUsers(users);
   };
 
-  useEffect(() => {
-    getUser();
-  });
-
   // Deletar usuário
   const deleteUser = async (id) => {
     try {
@@ -96,6 +94,22 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    getUser();
+
+    // Checa se está em mobiles
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+  }, [readUsers]);
+
+  // Menu fecha ao clicar somente em mobiles
+  const checkClick = () => {
+    if (isMobile) setAside(false);
+  };
+
   // Valores a serem passados via context
   const value = {
     name,
@@ -104,6 +118,7 @@ export const AppProvider = ({ children }) => {
     readUsers,
     modalModify,
     userIdModify,
+    aside,
     setName,
     setContact,
     setCity,
@@ -112,6 +127,8 @@ export const AppProvider = ({ children }) => {
     modifyUser,
     setModalModify,
     setUserIdModify,
+    setAside,
+    checkClick,
   };
 
   // Retorna o Context em todo o App

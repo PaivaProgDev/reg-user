@@ -1,9 +1,19 @@
 import React from "react";
+import { FaAngleDoubleRight } from "react-icons/fa";
+import { useAppContext } from "../context/AppContext";
 
 const Header = () => {
+  const { setAside, aside } = useAppContext();
   return (
-    <header className="bg-[#191919] px-4 py-3 text-white flex justify-end">
-      <h1 className="text-2xl">
+    <header className="bg-[#191919] px-4 py-3 text-white flex items-center w-full">
+      <FaAngleDoubleRight
+        onClick={() => setAside(!aside)}
+        color="white"
+        className={`cursor-pointer text-[18px] transition ${
+          aside && "rotate-180"
+        }`}
+      />
+      <h1 className="text-2xl flex w-full justify-end">
         <span className="font-extralight">Reg</span>
         <span className="font-semibold">User</span>
       </h1>
