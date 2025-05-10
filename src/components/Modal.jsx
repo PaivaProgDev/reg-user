@@ -5,12 +5,6 @@ import { BsTelephone, BsBuildings } from "react-icons/bs";
 import { useAppContext } from "../context/AppContext";
 const Modal = () => {
   const {
-    name,
-    contact,
-    city,
-    setName,
-    setContact,
-    setCity,
     modifyUser,
     setModalModify,
     userIdModify,
