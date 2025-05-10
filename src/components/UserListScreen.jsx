@@ -5,7 +5,11 @@ const UserList = () => {
   const { aside } = useAppContext();
 
   return (
-    <div className={`${aside && "ml-[13.25rem] "} h-full transition-all`}>
+    <div
+      className={`${
+        aside && "ml-[13.25rem] "
+      } h-full transition-all overflow-y-scroll pb-[5rem]`}
+    >
       <h2 className="bg-[#B2C7FF] px-6 py-3 text-[.92rem] uppercase font-semibold text-[#363636]">
         Lista de usuários
       </h2>

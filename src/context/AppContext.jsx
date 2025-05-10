@@ -29,10 +29,15 @@ export const AppProvider = ({ children }) => {
   const [aside, setAside] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Transforma a primera letra em maiúscula
-  const firstLetter = name.charAt(0).toUpperCase();
-  // Pega o restante do nome
-  const otherLetters = name.substring(1);
+  // Info input modify users
+  const [icon, setIcon] = useState("");
+  const [placeholder, setPlaceholder] = useState("");
+  const [change, setChange] = useState("");
+
+  // State dos usuários modificados
+  const [modifyName, setModifyName] = useState("");
+  const [modifyContact, setModifyContact] = useState("");
+  const [modifyCity, setModifyCity] = useState("");
 
   // Gera um ID por usuário
   const userIdGenerator = Math.random().toString(36).substring(2, 9);
@@ -44,10 +49,10 @@ export const AppProvider = ({ children }) => {
     try {
       await addDoc(collection(db, "users"), {
         id: userIdGenerator,
-        name: firstLetter + otherLetters,
-        contact,
-        city: firstLetter + otherLetters,
+        name: name.charAt(0).toLocaleUpperCase() + name.substring(1),
+        city: city.charAt(0).toLocaleUpperCase() + city.substring(1),
         dateRegister: new Date().toLocaleDateString(),
+        contact,
       });
 
       toast.success("Usuário cadastrado! :D");
@@ -75,8 +80,10 @@ export const AppProvider = ({ children }) => {
     try {
       const docRef = doc(db, "users", id);
       await deleteDoc(docRef);
+
+      toast.error("Usuário excluído");
     } catch (erro) {
-      console.log(erro);
+      toast.error("Não foi possível excluír o usuário!");
     }
   };
 
@@ -85,10 +92,12 @@ export const AppProvider = ({ children }) => {
     try {
       const docRef = doc(db, "users", id);
       await updateDoc(docRef, {
-        name: name,
-        contact: contact,
-        city: city,
+        name: modifyName,
+        contact: modifyContact,
+        city: modifyCity,
       });
+
+      toast.warning("Usuário modificado!");
     } catch (erro) {
       console.log(erro);
     }
@@ -119,6 +128,15 @@ export const AppProvider = ({ children }) => {
     modalModify,
     userIdModify,
     aside,
+    icon,
+    setIcon,
+    placeholder,
+    setPlaceholder,
+    change,
+    setModifyName,
+    setModifyContact,
+    setModifyCity,
+    setChange,
     setName,
     setContact,
     setCity,
