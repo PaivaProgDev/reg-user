@@ -51,7 +51,10 @@ export const AppProvider = ({ children }) => {
         id: userIdGenerator,
         name: name.charAt(0).toLocaleUpperCase() + name.substring(1),
         city: city.charAt(0).toLocaleUpperCase() + city.substring(1),
-        dateRegister: new Date().toLocaleDateString(),
+        dateRegister: {
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString(),
+        },
         contact,
       });
 
@@ -95,6 +98,10 @@ export const AppProvider = ({ children }) => {
         name: modifyName,
         contact: modifyContact,
         city: modifyCity,
+        modifyDate: {
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString(),
+        },
       });
 
       toast.warning("Usuário modificado!");

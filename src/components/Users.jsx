@@ -124,9 +124,32 @@ const Users = ({ setUserTd }) => {
                     className="font-semibold text-[#171824]
                   "
                   >
-                    Data de registro
+                    Registro
                   </span>
-                  <span className="font-normal">{user.data.dateRegister}</span>
+                  <span className="font-normal">
+                    {user.data.dateRegister.time}
+                  </span>
+                  <span className="font-normal">
+                    {user.data.dateRegister.date}
+                  </span>
+                </div>
+                <div className="flex flex-col mt-[.7rem]">
+                  {user.data.modifyDate && (
+                    <>
+                      <span
+                        className="font-semibold text-[#171824]
+                  "
+                      >
+                        Alteração
+                      </span>
+                      <span className="font-normal">
+                        {user.data.modifyDate.time}
+                      </span>
+                      <span className="font-normal">
+                        {user.data.modifyDate.date}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <div className=" text-[#353535] flex justify-between">
                   <div className="flex flex-col mt-1">
