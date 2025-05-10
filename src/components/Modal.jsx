@@ -14,6 +14,7 @@ const Modal = () => {
     setModifyName,
     setModifyContact,
     setModifyCity,
+    modalModify,
   } = useAppContext();
 
   const submitForm = (e) => {
@@ -31,7 +32,11 @@ const Modal = () => {
           onClick={submitForm}
           className="flex flex-col m-3 h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 bg-white"
         >
-          <label className="w-full border-b-1 border-gray-300 text-[13px] ">
+          <label
+            aria-label="23243423"
+            tabIndex={-10}
+            className="w-full border-b-1 border-gray-300 text-[13px] "
+          >
             {icon}
             <input
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"

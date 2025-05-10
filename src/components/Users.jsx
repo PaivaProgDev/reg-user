@@ -21,6 +21,18 @@ const Users = ({ setUserTd }) => {
     setModifyCity,
   } = useAppContext();
 
+  const handleModify = (user, field, placeholderText, iconElement) => {
+    setUserIdModify(user.id);
+    setModifyName(user.data.name);
+    setModifyContact(user.data.contact);
+    setModifyCity(user.data.city);
+    setChange(field);
+    setPlaceholder(placeholderText);
+    setModalModify(true);
+    setAside(false);
+    setIcon(iconElement);
+  };
+
   return (
     <>
       <div
@@ -40,24 +52,32 @@ const Users = ({ setUserTd }) => {
                   {setUserTd === "modify" && (
                     <FaPen
                       onClick={() => {
-                        setUserIdModify(user.id);
-                        setModifyName(user.data.name);
-                        setModifyContact(user.data.contact);
-                        setModifyCity(user.data.city);
-                        setPlaceholder("Nome");
-                        setChange("name");
-                        setIcon(
+                        handleModify(
+                          user,
+                          "name",
+                          "Nome",
                           <FaRegUser
                             strokeWidth={0.3}
                             fontSize={16}
                             className="text-[#4575F4]"
                           />
                         );
-
-                        setModalModify(true);
-                        setAside(false);
+                      }}
+                      onKeyDown={(e) => {
+                        e.key === "Enter" &&
+                          handleModify(
+                            user,
+                            "name",
+                            "Nome",
+                            <FaRegUser
+                              strokeWidth={0.3}
+                              fontSize={16}
+                              className="text-[#4575F4]"
+                            />
+                          );
                       }}
                       className={"cursor-pointer"}
+                      tabIndex={1}
                     />
                   )}
                 </div>
@@ -68,24 +88,32 @@ const Users = ({ setUserTd }) => {
                     {setUserTd === "modify" && (
                       <FaPen
                         onClick={() => {
-                          setUserIdModify(user.id);
-                          setModifyName(user.data.name);
-                          setModifyContact(user.data.contact);
-                          setModifyCity(user.data.city);
-                          setPlaceholder("Contato");
-                          setChange("contact");
-                          setIcon(
+                          handleModify(
+                            user,
+                            "contact",
+                            "Contato",
                             <BsTelephone
                               strokeWidth={0.3}
                               fontSize={16}
                               className="text-[#4575F4]"
                             />
                           );
-
-                          setModalModify(true);
-                          setAside(false);
+                        }}
+                        onKeyDown={(e) => {
+                          e.key === "Enter" &&
+                            handleModify(
+                              user,
+                              "contact",
+                              "Contato",
+                              <BsTelephone
+                                strokeWidth={0.3}
+                                fontSize={16}
+                                className="text-[#4575F4]"
+                              />
+                            );
                         }}
                         className={"cursor-pointer"}
+                        tabIndex={2}
                       />
                     )}
                   </div>
@@ -97,24 +125,32 @@ const Users = ({ setUserTd }) => {
                     {setUserTd === "modify" && (
                       <FaPen
                         onClick={() => {
-                          setPlaceholder("Cidade");
-                          setModifyName(user.data.name);
-                          setModifyContact(user.data.contact);
-                          setModifyCity(user.data.city);
-                          setUserIdModify(user.id);
-                          setChange("city");
-                          setIcon(
+                          handleModify(
+                            user,
+                            "city",
+                            "Cidade",
                             <BsBuildings
                               strokeWidth={0.3}
                               fontSize={16}
                               className="text-[#4575F4]"
                             />
                           );
-
-                          setModalModify(true);
-                          setAside(false);
+                        }}
+                        onKeyDown={(e) => {
+                          e.key === "Enter" &&
+                            handleModify(
+                              user,
+                              "city",
+                              "Cidade",
+                              <BsBuildings
+                                strokeWidth={0.3}
+                                fontSize={16}
+                                className="text-[#4575F4]"
+                              />
+                            );
                         }}
                         className={"cursor-pointer"}
+                        tabIndex={3}
                       />
                     )}
                   </div>
@@ -162,6 +198,7 @@ const Users = ({ setUserTd }) => {
                         onClick={() => deleteUser(user.id)}
                         className={"mt-2 bg-red-400"}
                         content={<FaRegTrashAlt />}
+                        aria={"Botão para excluir o usuário."}
                       />
                     )}
                   </div>
@@ -171,12 +208,12 @@ const Users = ({ setUserTd }) => {
           </>
         ) : (
           <div className="flex flex-col h-screen items-center mt-[10rem]">
-            <p className="text-[#363636] text-[14px] ">
+            <p className="text-[#363636] text-[14px] mb-8">
               Não há nenhum usuário cadastrado ainda...
             </p>
             <Link className="text-[13px]" to={"/user-registration"}>
               <Button
-                className={"mt-8"}
+                tabIndex={2}
                 content={
                   <>
                     <FaUserPlus fontSize={18} /> Cadastrar usuário

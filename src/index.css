@@ -20,24 +20,21 @@ a:hover {
     opacity: .9
 }
 
-input {
-    outline: 0;
+label:focus-within>input {
+    outline: 2px solid #4575F4;
+    padding: 3px 7px;
+    border-radius: 4px;
 }
 
 input {
     text-transform: capitalize;
+    outline: none;
 }
 
 input[type="text"]::placeholder {
     font-size: 13px;
 }
 
-table tr:nth-child(even) {
-    background-color: #ede8f8;
-    /* Cor de fundo para linhas pares */
-}
-
-table tr:nth-child(odd) {
-    background-color: #f7edf6;
-    /* Cor de fundo para linhas ímpares */
+.icon:focus {
+    background-color: red;
 }

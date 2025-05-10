@@ -39,6 +39,11 @@ export const AppProvider = ({ children }) => {
   const [modifyContact, setModifyContact] = useState("");
   const [modifyCity, setModifyCity] = useState("");
 
+  // Retorna a primeira letra maiúscula
+  const firstLetterUpper = (e) => {
+    return e.charAt(0).toLocaleUpperCase() + e.substring(1);
+  };
+
   // Gera um ID por usuário
   const userIdGenerator = Math.random().toString(36).substring(2, 9);
 
@@ -49,8 +54,8 @@ export const AppProvider = ({ children }) => {
     try {
       await addDoc(collection(db, "users"), {
         id: userIdGenerator,
-        name: name.charAt(0).toLocaleUpperCase() + name.substring(1),
-        city: city.charAt(0).toLocaleUpperCase() + city.substring(1),
+        name: firstLetterUpper(name),
+        city: firstLetterUpper(city),
         dateRegister: {
           date: new Date().toLocaleDateString(),
           time: new Date().toLocaleTimeString(),
@@ -95,13 +100,13 @@ export const AppProvider = ({ children }) => {
     try {
       const docRef = doc(db, "users", id);
       await updateDoc(docRef, {
-        name: modifyName,
-        contact: modifyContact,
-        city: modifyCity,
+        name: firstLetterUpper(modifyName),
+        city: firstLetterUpper(modifyCity),
         modifyDate: {
           date: new Date().toLocaleDateString(),
           time: new Date().toLocaleTimeString(),
         },
+        contact: modifyContact,
       });
 
       toast.warning("Usuário modificado!");

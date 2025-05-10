@@ -18,6 +18,7 @@ const Form = () => {
           <label className="w-full border-b-1 border-gray-300 text-[13px] ">
             <FaRegUser strokeWidth={0.3} fontSize={16} color="#4575F4" />
             <input
+              tabIndex={3}
               onChange={(e) => setName(e.target.value)}
               value={name}
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
@@ -29,6 +30,7 @@ const Form = () => {
           <label className="w-full border-b-1 border-gray-300 text-[13px]">
             <BsTelephone strokeWidth={0.3} fontSize={16} color="#4575F4" />
             <input
+              tabIndex={4}
               pattern="^\d{2} \d{5}-\d{4}$"
               onChange={(e) => setContact(parseInt(e.target.value))}
               value={contact}
@@ -41,6 +43,7 @@ const Form = () => {
           <label className="w-full border-b-1 border-gray-300 text-[13px]">
             <BsBuildings strokeWidth={0.3} fontSize={16} color="#4575F4" />
             <input
+              tabIndex={5}
               onChange={(e) => setCity(e.target.value)}
               value={city}
               className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
@@ -52,6 +55,7 @@ const Form = () => {
         </div>
       </div>
       <Button
+        tabIndex={5}
         content={"Cadastrar"}
         className="!mt-5"
         // disabled={
