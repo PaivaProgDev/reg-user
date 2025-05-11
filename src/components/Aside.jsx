@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import {
   FaUserGroup,
@@ -10,7 +9,7 @@ import {
 import { useAppContext } from "../context/AppContext";
 
 const Aside = ({}) => {
-  const { aside, setAside, checkClick } = useAppContext();
+  const { aside, checkClick } = useAppContext();
   return (
     <>
       <aside
@@ -57,19 +56,6 @@ const Aside = ({}) => {
               >
                 <FaUserPen fontSize={18} />
                 <span>Modificar usuário</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={checkClick}
-                to={"/remove-user"}
-                className={({
-                  isActive,
-                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
-              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
-              >
-                <FaUserXmark fontSize={18} />
-                <span>Remover usuário</span>
               </NavLink>
             </li>
           </ul>

@@ -6,9 +6,11 @@ const UserList = () => {
 
   return (
     <div
-      className={`${aside && "ml-[13.25rem] "} h-full transition-all ${
+      className={`${
+        aside && "ml-[13.25rem]"
+      } transition-all h-full pb-[5rem]  ${
         readUsers.length >= 1 && "overflow-y-scroll"
-      } pb-[5rem]`}
+      } `}
     >
       <h2 className="bg-[#B2C7FF] px-6 py-3 text-[.92rem] uppercase font-semibold text-[#363636]">
         Lista de usuários

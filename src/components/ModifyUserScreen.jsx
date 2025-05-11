@@ -6,7 +6,7 @@ const ModifyUserScreen = () => {
   const { aside, readUsers } = useAppContext();
   return (
     <div
-      className={`${aside && "ml-[13.25rem] "} h-full transition-all  pb-[5rem]
+      className={`${aside && "ml-[13.25rem] "} h-full transition-all pb-[5rem]
       ${readUsers.length >= 1 && "overflow-y-scroll"}
       `}
     >

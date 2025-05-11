@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { useAppContext } from "../context/AppContext";
 
@@ -15,7 +15,7 @@ const Header = () => {
           e.key === "Escape" && setAside(false);
         }}
         color="white"
-        className={`cursor-pointer text-[18px] transition   ${
+        className={`cursor-pointer text-[18px] transition ${
           aside && "rotate-180"
         }`}
       />
