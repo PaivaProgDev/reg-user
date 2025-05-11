@@ -5,13 +5,26 @@ import Button from "./Button";
 import { useAppContext } from "../context/AppContext";
 
 const Form = () => {
-  const { name, contact, city, setName, setContact, setCity, createUser } =
-    useAppContext();
+  const {
+    name,
+    contact,
+    city,
+    setName,
+    setContact,
+    setCity,
+    createUser,
+    theme,
+  } = useAppContext();
 
   return (
     <form
       onSubmit={createUser}
-      className="flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 shadow-md shadow-gray-300 "
+      className={`
+        ${
+          theme === "dark" &&
+          "bg-[#252525] shadow-none border-gray-700 placeholder:text-white"
+        }
+        flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 shadow-md shadow-gray-300`}
     >
       <div className="flex gap-7 items-center ">
         <div className="flex flex-col gap-4 w-full">
@@ -21,7 +34,10 @@ const Form = () => {
               tabIndex={3}
               onChange={(e) => setName(e.target.value)}
               value={name}
-              className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
+              className={`
+                ${theme === "dark" && "placeholder:text-gray-600"}
+                mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
+                `}
               type="text"
               placeholder="Nome"
               // required
@@ -34,7 +50,13 @@ const Form = () => {
               pattern="^\d{2} \d{5}-\d{4}$"
               onChange={(e) => setContact(parseInt(e.target.value))}
               value={contact}
-              className=" mt-2 pl-[6px] text-[#3d3d3d] w-full"
+              className={`
+                ${
+                  theme === "dark" &&
+                  "placeholder:text-gray-600 placeholder:!text-[13px]"
+                }
+                mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
+                `}
               type="number"
               placeholder="Contato"
               // required
@@ -46,7 +68,10 @@ const Form = () => {
               tabIndex={5}
               onChange={(e) => setCity(e.target.value)}
               value={city}
-              className=" mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full"
+              className={`
+                ${theme === "dark" && "placeholder:text-gray-600"}
+                mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
+                `}
               type="text"
               placeholder="Cidade"
               // required

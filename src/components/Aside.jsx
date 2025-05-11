@@ -9,13 +9,15 @@ import {
 import { useAppContext } from "../context/AppContext";
 
 const Aside = ({}) => {
-  const { aside, checkClick } = useAppContext();
+  const { aside, checkClick, theme } = useAppContext();
   return (
     <>
       <aside
         className={`bg-[#efedfa] absolute transition-all w-full sm:w-auto -left-full h-full z-20 ${
           aside && "left-0 "
-        }`}
+        }
+        ${theme === "dark" && "!bg-[#252525]"}
+        `}
       >
         <nav>
           <ul className="flex flex-col">
@@ -25,7 +27,9 @@ const Aside = ({}) => {
                 to={"/"}
                 className={({
                   isActive,
-                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] sm:${aside}
+                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] sm:${aside} ${
+                  theme === "dark" && "text-white"
+                }
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
               >
                 <FaUserGroup fontSize={18} />
@@ -38,7 +42,9 @@ const Aside = ({}) => {
                 to={"/user-registration"}
                 className={({
                   isActive,
-                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] ${
+                  theme === "dark" && "text-white"
+                }
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
               >
                 <FaUserPlus fontSize={18} />
@@ -51,7 +57,9 @@ const Aside = ({}) => {
                 to={"/modify-user"}
                 className={({
                   isActive,
-                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636]
+                }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] ${
+                  theme === "dark" && "text-white"
+                }
               ${isActive ? "bg-[#4575F4] text-white" : ""}`}
               >
                 <FaUserPen fontSize={18} />

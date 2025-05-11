@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { useAppContext } from "../context/AppContext";
 
 const Header = () => {
-  const { setAside, aside } = useAppContext();
+  const { setAside, aside, handleToggleTheme } = useAppContext();
 
   return (
-    <header className="bg-[#191919] px-4 py-3 text-white flex items-center w-full">
+    <header className="bg-[#191919] px-4 py-3 text-white w-full flex items-center justify-between  ">
       <FaAngleDoubleRight
         tabIndex={1}
         onClick={() => setAside(!aside)}
@@ -20,7 +19,9 @@ const Header = () => {
         }`}
       />
 
-      <h1 className="text-2xl flex w-full justify-end">
+      <button onClick={handleToggleTheme}>Dark</button>
+
+      <h1 className="text-2xl flex">
         <span className="font-extralight">Reg</span>
         <span className="font-semibold">User</span>
       </h1>

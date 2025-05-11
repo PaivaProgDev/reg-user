@@ -12,7 +12,7 @@ const App = () => {
   const { modalModify } = useAppContext();
 
   return (
-    <main className="@container-normal App w-full relative h-screen overflow-hidden">
+    <main className=" w-full relative h-screen overflow-hidden">
       <ToastContainer
         position="top-right"
         autoClose={1500}

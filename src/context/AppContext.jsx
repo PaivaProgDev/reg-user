@@ -39,6 +39,16 @@ export const AppProvider = ({ children }) => {
   const [modifyContact, setModifyContact] = useState("");
   const [modifyCity, setModifyCity] = useState("");
 
+  // theme dark
+  const [theme, setTheme] = useState(() => {
+    const localTheme = localStorage.getItem("dark");
+    return localTheme ? localTheme : "dark";
+  });
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   // Retorna a primeira letra maiúscula
   const firstLetterUpper = (e) => {
     return e.charAt(0).toLocaleUpperCase() + e.substring(1);
@@ -116,15 +126,17 @@ export const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUser();
-
     // Checa se está em mobiles
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
 
     checkMobile();
-  }, [readUsers]);
+
+    getUser();
+
+    localStorage.setItem("dark", theme);
+  }, [theme, readUsers]);
 
   // Menu fecha ao clicar somente em mobiles
   const checkClick = () => {
@@ -145,6 +157,8 @@ export const AppProvider = ({ children }) => {
     placeholder,
     setPlaceholder,
     change,
+    handleToggleTheme,
+    theme,
     setModifyName,
     setModifyContact,
     setModifyCity,
