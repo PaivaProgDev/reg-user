@@ -42,13 +42,13 @@ const Users = ({ setUserTd }) => {
               key={user.id}
               className={`${
                 theme === "dark" &&
-                "bg-[#252525] shadow-none border-transparent"
-              } shadow-none" text-[#353535] w-full max-w-[18rem] text-[13px] shadow-md shadow-gray-400 font-medium flex flex-col justify-between gap-0.5 border border-gray-400 border-l-4 border-l-[#4575F4] rounded px-4 py-2`}
+                "bg-[var(--bg-secondary-dark-color)] shadow-none border-transparent"
+              } shadow-none" text-[#353535] w-full max-w-[18rem] text-[13px] shadow-md shadow-gray-400 font-medium flex flex-col justify-between gap-0.5 border border-gray-400 border-l-4 border-l-[var(--primary-color)] rounded px-4 py-2`}
             >
               <div className="flex gap-3 mt-[.7rem] justify-between">
                 <span
                   className={`${
-                    theme === "dark" && "text-white"
+                    theme === "dark" && "text-[var(--text-dark-color)]"
                   } font-semibold text-[16px]`}
                 >
                   {user.data.name}
@@ -63,7 +63,7 @@ const Users = ({ setUserTd }) => {
                         <FaRegUser
                           strokeWidth={0.3}
                           fontSize={16}
-                          className="text-[#4575F4]"
+                          className="text-[var(--primary-color)]"
                         />
                       );
                     }}
@@ -76,11 +76,11 @@ const Users = ({ setUserTd }) => {
                           <FaRegUser
                             strokeWidth={0.3}
                             fontSize={16}
-                            className="text-[#4575F4]"
+                            className="text-[var(--primary-color)]"
                           />
                         );
                     }}
-                    className={"cursor-pointer text-[#4575F4]"}
+                    className={"cursor-pointer text-[var(--primary-color)]"}
                     tabIndex={1}
                   />
                 )}
@@ -96,7 +96,7 @@ const Users = ({ setUserTd }) => {
                 <div className="flex items-center justify-between gap-4">
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal`}
                   >
                     {user.data.contact}
@@ -111,7 +111,7 @@ const Users = ({ setUserTd }) => {
                           <BsTelephone
                             strokeWidth={0.3}
                             fontSize={16}
-                            className="text-[#4575F4]"
+                            className="text-[var(--primary-color)]"
                           />
                         );
                       }}
@@ -124,11 +124,11 @@ const Users = ({ setUserTd }) => {
                             <BsTelephone
                               strokeWidth={0.3}
                               fontSize={16}
-                              className="text-[#4575F4]"
+                              className=" text-[var(--primary-color)]"
                             />
                           );
                       }}
-                      className={"cursor-pointer text-[#4575F4]"}
+                      className={"cursor-pointer text-[var(--primary-color)]"}
                       tabIndex={2}
                     />
                   )}
@@ -142,7 +142,7 @@ const Users = ({ setUserTd }) => {
                 >
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal text-[#171824]`}
                   ></span>
                   Cidade
@@ -150,7 +150,7 @@ const Users = ({ setUserTd }) => {
                 <div className="flex items-center justify-between gap-4">
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal `}
                   >
                     {user.data.city}
@@ -165,7 +165,7 @@ const Users = ({ setUserTd }) => {
                           <BsBuildings
                             strokeWidth={0.3}
                             fontSize={16}
-                            className="text-[#4575F4]"
+                            className="text-[var(--primary-color)]"
                           />
                         );
                       }}
@@ -178,11 +178,11 @@ const Users = ({ setUserTd }) => {
                             <BsBuildings
                               strokeWidth={0.3}
                               fontSize={16}
-                              className="text-[#4575F4]"
+                              className="text-[var(--primary-color)]"
                             />
                           );
                       }}
-                      className={"cursor-pointer text-[#4575F4]"}
+                      className={"cursor-pointer text-[var(--primary-color)]"}
                       tabIndex={3}
                     />
                   )}
@@ -200,14 +200,14 @@ const Users = ({ setUserTd }) => {
                   </span>
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal `}
                   >
                     {user.data.dateRegister.time}
                   </span>
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal `}
                   >
                     {user.data.dateRegister.date}
@@ -226,14 +226,14 @@ const Users = ({ setUserTd }) => {
                       </span>
                       <span
                         className={`${
-                          theme === "dark" && "text-white"
+                          theme === "dark" && "text-[var(--text-dark-color)]"
                         } font-normal `}
                       >
                         {user.data.modifyDate.time}
                       </span>
                       <span
                         className={`${
-                          theme === "dark" && "text-white"
+                          theme === "dark" && "text-[var(--text-dark-color)]"
                         } font-normal `}
                       >
                         {user.data.modifyDate.date}
@@ -254,7 +254,7 @@ const Users = ({ setUserTd }) => {
                   </span>
                   <span
                     className={`${
-                      theme === "dark" && "text-white"
+                      theme === "dark" && "text-[var(--text-dark-color)]"
                     } font-normal `}
                   >
                     {user.data.id}

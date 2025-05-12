@@ -22,20 +22,31 @@ const Form = () => {
       className={`
         ${
           theme === "dark" &&
-          "bg-[#252525] shadow-none border-gray-700 placeholder:text-white"
+          "bg-[var(--bg-secondary-dark-color)] shadow-none border-0 placeholder:text-white"
         }
         flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 shadow-md shadow-gray-300`}
     >
       <div className="flex gap-7 items-center ">
         <div className="flex flex-col gap-4 w-full">
-          <label className="w-full border-b-1 border-gray-300 text-[13px] ">
-            <FaRegUser strokeWidth={0.3} fontSize={16} color="#4575F4" />
+          <label
+            className={`${
+              theme === "dark" && "border-b-[#5e5e5e]"
+            } w-full border-b-1 border-gray-300 text-[13px]`}
+          >
+            <FaRegUser
+              className="text-[var(--primary-color)]"
+              strokeWidth={0.3}
+              fontSize={16}
+            />
             <input
               tabIndex={3}
               onChange={(e) => setName(e.target.value)}
               value={name}
               className={`
-                ${theme === "dark" && "placeholder:text-gray-600"}
+                ${
+                  theme === "dark" &&
+                  "placeholder:text-gray-600 text-[var(--text-dark-color)]"
+                }
                 mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
                 `}
               type="text"
@@ -43,8 +54,16 @@ const Form = () => {
               // required
             />
           </label>
-          <label className="w-full border-b-1 border-gray-300 text-[13px]">
-            <BsTelephone strokeWidth={0.3} fontSize={16} color="#4575F4" />
+          <label
+            className={`${
+              theme === "dark" && "border-b-[#5e5e5e]"
+            } w-full border-b-1 border-gray-300 text-[13px]`}
+          >
+            <BsTelephone
+              className="text-[var(--primary-color)]"
+              strokeWidth={0.3}
+              fontSize={16}
+            />
             <input
               tabIndex={4}
               pattern="^\d{2} \d{5}-\d{4}$"
@@ -53,7 +72,7 @@ const Form = () => {
               className={`
                 ${
                   theme === "dark" &&
-                  "placeholder:text-gray-600 placeholder:!text-[13px]"
+                  "placeholder:text-gray-600 text-[var(--text-dark-color)]"
                 }
                 mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
                 `}
@@ -62,14 +81,25 @@ const Form = () => {
               // required
             />
           </label>
-          <label className="w-full border-b-1 border-gray-300 text-[13px]">
-            <BsBuildings strokeWidth={0.3} fontSize={16} color="#4575F4" />
+          <label
+            className={`${
+              theme === "dark" && "border-b-[#5e5e5e]"
+            } w-full border-b-1 border-gray-300 text-[13px]`}
+          >
+            <BsBuildings
+              className="text-[var(--primary-color)]"
+              strokeWidth={0.3}
+              fontSize={16}
+            />
             <input
               tabIndex={5}
               onChange={(e) => setCity(e.target.value)}
               value={city}
               className={`
-                ${theme === "dark" && "placeholder:text-gray-600"}
+                ${
+                  theme === "dark" &&
+                  "placeholder:text-gray-600 text-[var(--text-dark-color)]"
+                }
                 mt-2 pl-[6px] text-[13px] text-[#3d3d3d] w-full
                 `}
               type="text"
@@ -82,7 +112,7 @@ const Form = () => {
       <Button
         tabIndex={5}
         content={"Cadastrar"}
-        className="!mt-5"
+        className="!mt-5 bg-[var(--primary-color)]"
         // disabled={
         //   city.length <= 3 ||
         //   name.length <= 3 ||

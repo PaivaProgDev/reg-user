@@ -16,7 +16,7 @@ const Aside = ({}) => {
         className={`bg-[#efedfa] absolute transition-all w-full sm:w-auto -left-full h-full z-20 ${
           aside && "left-0 "
         }
-        ${theme === "dark" && "!bg-[#252525]"}
+        ${theme === "dark" && "!bg-[var(--bg-secondary-dark-color)]"}
         `}
       >
         <nav>
@@ -28,9 +28,12 @@ const Aside = ({}) => {
                 className={({
                   isActive,
                 }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] sm:${aside} ${
-                  theme === "dark" && "text-white"
+                  theme === "dark" && "text-[var(--text-dark-color)]"
                 }
-              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
+              ${
+                isActive &&
+                "bg-[var(--primary-color)] !text-[var(--bg-secondary-dark-color)]"
+              }`}
               >
                 <FaUserGroup fontSize={18} />
                 <span>Lista de usuários</span>
@@ -43,9 +46,12 @@ const Aside = ({}) => {
                 className={({
                   isActive,
                 }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] ${
-                  theme === "dark" && "text-white"
+                  theme === "dark" && "text-[var(--text-dark-color)]"
                 }
-              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
+              ${
+                isActive &&
+                "bg-[var(--primary-color)] !text-[var(--bg-secondary-dark-color)]"
+              }`}
               >
                 <FaUserPlus fontSize={18} />
                 <span>Cadastrar usuário</span>
@@ -58,9 +64,12 @@ const Aside = ({}) => {
                 className={({
                   isActive,
                 }) => `flex items-center gap-3 px-6 py-3 text-[.92rem] text-[#363636] ${
-                  theme === "dark" && "text-white"
+                  theme === "dark" && "text-[var(--text-dark-color)]"
                 }
-              ${isActive ? "bg-[#4575F4] text-white" : ""}`}
+              ${
+                isActive &&
+                "bg-[var(--primary-color)] !text-[var(--bg-secondary-dark-color)]"
+              }`}
               >
                 <FaUserPen fontSize={18} />
                 <span>Modificar usuário</span>

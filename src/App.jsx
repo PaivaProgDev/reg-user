@@ -9,10 +9,14 @@ import ModifyUserScreen from "./components/ModifyUserScreen";
 import { useAppContext } from "./context/AppContext";
 import Modal from "./components/Modal";
 const App = () => {
-  const { modalModify } = useAppContext();
+  const { modalModify, theme } = useAppContext();
 
   return (
-    <main className=" w-full relative h-screen overflow-hidden">
+    <main
+      className={`${
+        theme === "dark" && "bg-[var(--bg-primary-dark-color)] text-[red] "
+      } w-full relative h-screen overflow-hidden`}
+    >
       <ToastContainer
         position="top-right"
         autoClose={1500}
