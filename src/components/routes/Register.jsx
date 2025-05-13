@@ -1,27 +1,50 @@
-import React from "react";
-import { useAppContext } from "../../context/AppContext";
+import { useAuthContext } from "../../context/AuthContext";
+import Button from "../Button";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { theme } = useAppContext();
+  const { setEmail, setPassword, createUserAccount } = useAuthContext();
+  const navigate = useNavigate();
 
   return (
     <form
-      className={`
-        ${
-          theme === "dark" &&
-          "bg-[var(--bg-secondary-dark-color)] shadow-none border-0 placeholder:text-white"
-        }
-        flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 shadow-md shadow-gray-300`}
+      onSubmit={(e) => e.preventDefault()}
+      className={`flex flex-col h-fit w-full max-w-[30rem] border py-7 px-8 rounded border-gray-300 shadow-md shadow-gray-300`}
     >
+      <p className="text-center">Cadastre-se</p>
       <label>
-        <input type="text" placeholder="email" />
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="email"
+        />
       </label>
       <label>
-        <input type="text" placeholder="password" />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          type="text"
+          placeholder="password"
+        />
       </label>
       <div>
-        <strong>Já tens conta? </strong>
+        <p className="text-[13px] flex gap-2">
+          Já tens conta?
+          <Link
+            className="font-semibold text-[var(--primary-color)]"
+            to="/login"
+          >
+            Entrar
+          </Link>
+        </p>
       </div>
+      <Button
+        onClick={() => {
+          createUserAccount();
+          navigate("/login");
+        }}
+        content={"Cadastrar"}
+        className={"mt-[1rem]"}
+      />
     </form>
   );
 };

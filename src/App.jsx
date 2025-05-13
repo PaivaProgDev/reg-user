@@ -6,50 +6,88 @@ import UserListScreen from "./components/routes/UserListScreen";
 import RegistrationScreen from "./components/routes/RegistrationScreen";
 import { ToastContainer } from "react-toastify";
 import ModifyUserScreen from "./components/routes/ModifyUserScreen";
-import { useAppContext } from "./context/AppContext";
 import Modal from "./components/Modal";
 import Login from "./components/routes/Login";
 import Register from "./components/routes/Register";
-import { useState } from "react";
 import NotFound from "./components/routes/NotFound";
+import { useAppContext } from "./context/AppContext";
+import { useAuthContext } from "./context/AuthContext";
+
+// Rotas Privadas
+
+import PublicRoutes from "./components/routes/Public/PublicRoutes";
+import PrivateRoutes from "./components/routes/Private/PrivateRoutes";
 
 const App = () => {
-  const { modalModify, theme } = useAppContext();
-  const [isLogged, setIsLogged] = useState(false);
+  const { modalModify, theme, readUsers } = useAppContext();
+  const { isLogged } = useAuthContext();
 
   return (
     <main
       className={`${
-        theme === "dark" && "bg-[var(--bg-primary-dark-color)] text-[red] "
+        theme === "dark" && "bg-[var(--bg-primary-dark-color)]"
       } w-full relative h-screen overflow-hidden transition-colors`}
     >
-      <ToastContainer
-        position="top-right"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
       <BrowserRouter>
-        {isLogged && <Header />}
-        {modalModify && <Modal />}
-        <Aside />
+        {isLogged && (
+          <>
+            <ToastContainer
+              position="top-right"
+              autoClose={1500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            <Header />
+            <Aside />
+            {modalModify && <Modal />}
+          </>
+        )}
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/users" element={isLogged && <UserListScreen />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoutes>
+                <UserListScreen />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoutes>
+                <Register />
+              </PublicRoutes>
+            }
+          />
           <Route
             path="/user-registration"
-            element={isLogged && <RegistrationScreen />}
+            element={
+              <PrivateRoutes>
+                <RegistrationScreen />
+              </PrivateRoutes>
+            }
           />
           <Route
             path="/modify-user"
-            element={isLogged && <ModifyUserScreen />}
+            element={
+              <PrivateRoutes>
+                <ModifyUserScreen />
+              </PrivateRoutes>
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

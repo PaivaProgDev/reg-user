@@ -3,6 +3,7 @@ import { FaRegEnvelope, FaRegUser } from "react-icons/fa6";
 import { BsTelephone, BsBuildings } from "react-icons/bs";
 import Button from "./Button";
 import { useAppContext } from "../context/AppContext";
+import { useAuthContext } from "../context/AuthContext";
 
 const Form = () => {
   const {
@@ -14,7 +15,10 @@ const Form = () => {
     setCity,
     createUser,
     theme,
+    setIsLogged,
   } = useAppContext();
+
+  const { signOutUser } = useAuthContext();
 
   return (
     <form
@@ -119,6 +123,7 @@ const Form = () => {
         //   contact.length <= 6
         // }
       />
+      <button onClick={signOutUser}>Deslogar</button>
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import { useAppContext } from "../../context/AppContext";
 import Users from "../Users";
 
-const UserList = () => {
+const UserListScreen = () => {
   const { aside, readUsers, theme } = useAppContext();
 
   return (
@@ -25,4 +25,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default UserListScreen;

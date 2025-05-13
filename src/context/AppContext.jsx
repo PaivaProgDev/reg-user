@@ -62,7 +62,7 @@ export const AppProvider = ({ children }) => {
     e.preventDefault();
 
     try {
-      await addDoc(collection(db, "users"), {
+      await addDoc(collection(uid, "personal", db, "users"), {
         id: userIdGenerator,
         name: firstLetterUpper(name),
         city: firstLetterUpper(city),
@@ -153,12 +153,12 @@ export const AppProvider = ({ children }) => {
     userIdModify,
     aside,
     icon,
-    setIcon,
     placeholder,
-    setPlaceholder,
     change,
-    handleToggleTheme,
     theme,
+    setIcon,
+    setPlaceholder,
+    handleToggleTheme,
     setModifyName,
     setModifyContact,
     setModifyCity,
