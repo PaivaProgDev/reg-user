@@ -1,5 +1,5 @@
-import { useAppContext } from "../context/AppContext";
-import Users from "./Users";
+import { useAppContext } from "../../context/AppContext";
+import Users from "../Users";
 
 const UserList = () => {
   const { aside, readUsers, theme } = useAppContext();

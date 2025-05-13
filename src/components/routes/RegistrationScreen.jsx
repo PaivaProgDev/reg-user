@@ -1,5 +1,5 @@
-import { useAppContext } from "../context/AppContext";
-import Form from "./Form";
+import { useAppContext } from "../../context/AppContext";
+import Form from "../Form";
 
 const RegistrationScreen = () => {
   const { aside, theme } = useAppContext();

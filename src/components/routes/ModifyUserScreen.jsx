@@ -1,6 +1,5 @@
-import React from "react";
-import Users from "./Users";
-import { useAppContext } from "../context/AppContext";
+import Users from "../Users";
+import { useAppContext } from "../../context/AppContext";
 
 const ModifyUserScreen = () => {
   const { aside, readUsers, theme } = useAppContext();

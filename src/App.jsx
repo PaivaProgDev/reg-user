@@ -2,14 +2,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
 import Aside from "./components/Aside";
-import UserListScreen from "./components/UserListScreen";
-import RegistrationScreen from "./components/RegistrationScreen";
+import UserListScreen from "./components/routes/UserListScreen";
+import RegistrationScreen from "./components/routes/RegistrationScreen";
 import { ToastContainer } from "react-toastify";
-import ModifyUserScreen from "./components/ModifyUserScreen";
+import ModifyUserScreen from "./components/routes/ModifyUserScreen";
 import { useAppContext } from "./context/AppContext";
 import Modal from "./components/Modal";
+import Login from "./components/routes/Login";
+import Register from "./components/routes/Register";
+import { useState } from "react";
+import NotFound from "./components/routes/NotFound";
+
 const App = () => {
   const { modalModify, theme } = useAppContext();
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <main
@@ -30,13 +36,22 @@ const App = () => {
         theme="light"
       />
       <BrowserRouter>
-        <Header />
-        <Aside />
+        {isLogged && <Header />}
         {modalModify && <Modal />}
+        <Aside />
         <Routes>
-          <Route path="/" element={<UserListScreen />} />
-          <Route path="/user-registration" element={<RegistrationScreen />} />
-          <Route path="/modify-user" element={<ModifyUserScreen />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/users" element={isLogged && <UserListScreen />} />
+          <Route
+            path="/user-registration"
+            element={isLogged && <RegistrationScreen />}
+          />
+          <Route
+            path="/modify-user"
+            element={isLogged && <ModifyUserScreen />}
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </main>
