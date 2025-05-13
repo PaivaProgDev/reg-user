@@ -15,7 +15,7 @@ const App = () => {
     <main
       className={`${
         theme === "dark" && "bg-[var(--bg-primary-dark-color)] text-[red] "
-      } w-full relative h-screen overflow-hidden`}
+      } w-full relative h-screen overflow-hidden transition-colors`}
     >
       <ToastContainer
         position="top-right"

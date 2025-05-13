@@ -6,7 +6,6 @@
     list-style: none;
 }
 
-
 ::placeholder {
     font-size: 14px;
 }
@@ -22,14 +21,14 @@ a:hover {
 }
 
 label:focus-within>input {
-    outline: 2px solid #4575F4;
-    padding: 3px 7px;
+    outline: 1px solid var(--primary-color);
     border-radius: 4px;
 }
 
 input {
     text-transform: capitalize;
     outline: none;
+    padding: 3px 7px;
 }
 
 input::placeholder {
